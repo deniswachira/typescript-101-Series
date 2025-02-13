@@ -3,11 +3,11 @@ export const variables = () => {
     // Challenge 1: Fix the Type Safety Issue
 
     // Fix this function to avoid using 'any'
-    function processInput(input: any) {
+    function processInput(input: string):string {
         return input.toUpperCase(); // ❌ This may break if input is not a string
     }
 
-    // console.log(processInput("typescript"));
+    console.log(processInput("typescript"));
     // console.log(processInput(100)); // ❌ Error
 
 
@@ -18,12 +18,12 @@ export const variables = () => {
     userResponse = 42;
 
     // Convert to number only if it's a number
-    // Fix this: let result: number = userResponse * 2; ❌ ERROR
-
+    let result: number | null = typeof userResponse === "number" ? userResponse * 2 : null;
+    console.log(result);
     // Challenge 3: Logging Function
     // Create a function logMessage that takes a message and logs it
     function logMessage(message: string) {
-        // Your code here
+        console.log(message);
     }
     logMessage("Hello TypeScript!"); // Should log to console
 
@@ -32,10 +32,18 @@ export const variables = () => {
     // Challenge 4: Create an Error-Throwing Function
     // Write a function that throws an error if a user is not logged in
     function checkLogin(isLoggedIn: boolean) {
-        // Your code here
+        if (!isLoggedIn) {
+            throw new Error("User is not logged in!");
+        }
+        console.log("User is logged in.");
     }
-
-    // Test: checkLogin(false); // Should throw an error
+    
+    try {
+        checkLogin(false); 
+    } catch (error) {
+        console.error("Error:", (error as Error).message);
+    }
+    
 
 
 
