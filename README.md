@@ -1,7 +1,7 @@
 # Installation part
 # Make sure typescript is installed globally buy running 
 ```
-npm instal -g typescript
+npm install -g typescript
 ```
 
 1 Clone the repo
